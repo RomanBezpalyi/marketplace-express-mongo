@@ -30,11 +30,9 @@ apiRoutes
   .get('/products', (request, response) => {
     if (request.query.ids) {
       getProductsByIds(request, response)
-    } else
-    if (request.query.category) {
+    } else if (request.query.category) {
       getProductsByCategory(request, response)
-    } else
-    if (request.url === '/products') {
+    } else if (request.url === '/products') {
       allproductsRoute(request, response)
     }
   })
