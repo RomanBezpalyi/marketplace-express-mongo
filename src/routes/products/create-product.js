@@ -1,4 +1,4 @@
-const Product = require('../../db/schemas/product')
+const Product = require('../../db/schemas/products-list')
 
 const createProduct = (request, response) => {
     let body = '';
@@ -6,6 +6,7 @@ const createProduct = (request, response) => {
         body = body + data;
     });
     request.on('end', function () {
+        try {
         const productData = JSON.parse(body);
         const newProduct = new Product(productData);
         response.removeHeader('X-Powered-By');
@@ -29,6 +30,7 @@ const createProduct = (request, response) => {
                 console.log(err)
                 sendError()
             })
+        } catch(e) {console.error(e)}
     })
 }
 
