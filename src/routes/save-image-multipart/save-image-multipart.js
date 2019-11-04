@@ -3,10 +3,11 @@ const path = require('path');
 const TEMPORARY_IMAGE_FOLDER = path.join(__dirname, '../../', 'assets');
 const PRODUCTS_FOLDER = path.join(__dirname, '../../', 'db', 'products');
 
-const createFolder = (filePath) => {
-    if (!fs.existsSync(filePath)) {
-        fs.mkdirSync(filePath);
-    }
+const createFolder = (filePath) => { 
+    return new Promise((res, rej) => {
+    if (!fs.exists(filePath)) {
+        res(fs.mkdir(filePath));
+    }})
 };
 
 const copy = (oldPath, newPath) => {
