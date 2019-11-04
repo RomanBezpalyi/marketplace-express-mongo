@@ -13,7 +13,7 @@ const orderSchema = new Schema({
       type: String,
       validate: {
         validator: function (text) {
-          return text === "M" || text === "XL" || text === "XXL";
+          return ["M", "XL", "XXL"].includes(text)
         },
         message: 'Not valid size, must be "M" || "XL" || "XXL"'
       }
@@ -37,7 +37,7 @@ const orderSchema = new Schema({
     type: String,
     validate: {
       validator: function (text) {
-        return text === "inProgress" || text === "declined" || text === "finished" || text === "failed";
+        return ["inProgress", "declined", "finished", "failed"].includes(text);
       },
       message: 'Not valid status, must be "inProgress" || "declined" || "finished" || "failed"'
     }
