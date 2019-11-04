@@ -6,6 +6,7 @@ const signUpRoute = (request, response) => {
     body = body + data;
   });
   request.on('end', function () {
+    try{
     const userData = JSON.parse(body);
     const newUser = new User(userData);
     response.removeHeader('X-Powered-By');
@@ -26,7 +27,7 @@ const signUpRoute = (request, response) => {
     newUser.save()
       .then(sendResponse)
       .catch(sendError)
-  })
+    }catch(e){console.error(e)}})
 }
 
 module.exports = signUpRoute;
