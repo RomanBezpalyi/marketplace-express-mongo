@@ -1,4 +1,4 @@
-const Product = require('../../db/schemas/product')
+const Product = require('../../db/schemas/products-list')
 
 const updateProduct = (request, response) => {
     let body = '';
@@ -6,6 +6,7 @@ const updateProduct = (request, response) => {
         body = body + data;
     });
     request.on('end', function () {
+        try{
         const product = JSON.parse(body);
         const id = request.params.id;
         const sendError = () => {
@@ -40,7 +41,7 @@ const updateProduct = (request, response) => {
                 console.log(err.message);
                 sendError();
             })
-    })
+        }catch(e){console.error(e)}})
 
 };
 
