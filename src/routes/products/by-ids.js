@@ -1,4 +1,4 @@
-const Product = require('../../db/schemas/product')
+const Product = require('../../db/schemas/products-list')
 
 const productsRoute = (request, response) => {
     ids = request.query.ids.split(",");
