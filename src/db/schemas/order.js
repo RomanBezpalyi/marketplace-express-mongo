@@ -26,7 +26,7 @@ const orderSchema = new Schema({
     type: String,
     validate: {
       validator: function (text) {
-        return text === "delivery" || text === "office";
+        return ["delivery", "office"].includes(text);
       },
       message: 'Not valid deliveryType, must be "delivery" || "office"'
     }
